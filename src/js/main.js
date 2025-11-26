@@ -32,7 +32,7 @@ loginButton.addEventListener("click", async () => {
   } else {
     showMessage("Login successful! Redirecting...");
     setTimeout(() => {
-      window.location.href = "./src/pages/dashboard.html";
+      window.location.href = "/src/pages/dashboard.html";
     }, 800);
   }
 });

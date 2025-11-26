@@ -5,16 +5,31 @@
     <link rel="icon" type="image/svg+xml" href="/vite.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Playlist Manager - Dashboard</title>
+    <link rel="stylesheet" href="/src/css/style.css">
     <script type="module" src="/src/js/dashboard.js"></script>
 </head>
+
 <body>
-    <header></header>
+    <header class="header">
+        <a href="/index.html" class="logo">Playlist App</a>
+
+        <nav class="nav">
+            <a href="/src/pages/explore.html">Explore</a>
+            <a href="/src/pages/dashboard.html" class="active">My Playlists</a>
+        </nav>
+    </header>
     
-    <main>
-        <h1>Your Playlists</h1>
-        <button id="logout">Sign Out</button>
-        <button id="create">New Playlist</button>
-        <div id="list"></div>
+    <main class="container">
+        <div class="card">
+            <h1>Your Playlists</h1>
+
+            <div class="row dashboard-top">
+                <button id="logout" class="danger">Sign Out</button>
+                <button id="create">New Playlist</button>
+            </div>
+
+            <ul id="list" class="playlist-list"></ul>
+        </div>
     </main>
 
     <footer></footer>

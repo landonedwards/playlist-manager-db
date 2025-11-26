@@ -71,7 +71,7 @@ async function showDetails(id) {
     .map(
       (s) => `
         <li><img class="thumb" src="${
-          s.thumbnail_url || "/vite.svg"
+          s.thumbnail || "/vite.svg"
         }"/><div class="meta"><strong>${escapeHtml(
         s.title
       )}</strong><br/><small>${escapeHtml(s.artist)}</small></div></li>
@@ -94,7 +94,7 @@ importBtn.addEventListener("click", async () => {
     songs.map((s) => ({
       title: s.title,
       artist: s.artist,
-      thumbnail_url: s.thumbnail_url,
+      thumbnail: s.thumbnail,
     }))
   );
   alert("Imported playlist to your account.");

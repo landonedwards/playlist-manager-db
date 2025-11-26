@@ -29,11 +29,20 @@ const searchItunesBtn = document.getElementById("searchItunes");
 const itunesResults = document.getElementById("itunesResults");
 
 async function init() {
+  console.log('Getting user...');
   currentUser = await getUser();
-  if (!currentUser) return (location.href = "/index.html");
+  console.log('Current user:', currentUser);
+  
+  if (!currentUser) {
+    console.log('No user found, redirecting...');
+    return (location.href = "/index.html");
+  }
+  
   if (!playlistId) return alert("No playlist id provided.");
 
   playlist = await getPlaylistById(playlistId);
+  console.log('Playlist:', playlist);
+  
   if (!playlist) return alert("Playlist not found.");
 
   playlistTitleEl.textContent = playlist.title;
@@ -42,13 +51,14 @@ async function init() {
   loadSongs();
 }
 
+
 async function loadSongs() {
   const songs = await getSongsForPlaylist(playlistId);
   songList.innerHTML = songs
     .map(
       (s) => `
         <li data-id="${s.id}">
-          <img class="thumb" src="${s.thumbnail_url || "/vite.svg"}" alt="" />
+          <img class="thumb" src="${s.thumbnail || "/music-placeholder.png"}" alt="" />
           <div class="meta">
             <strong>${escapeHtml(s.title)}</strong><br/>
             <small>${escapeHtml(s.artist)}</small>
@@ -74,14 +84,27 @@ function attachRemoveHandlers() {
 
 manualAdd.addEventListener("submit", async (e) => {
   e.preventDefault();
-  await addSong(
+  console.log('Adding song...', {
     playlistId,
-    songTitle.value.trim(),
-    songArtist.value.trim(),
-    songThumb.value.trim() || null
-  );
-  songTitle.value = songArtist.value = songThumb.value = "";
-  loadSongs();
+    title: songTitle.value.trim(),
+    artist: songArtist.value.trim(),
+    thumb: songThumb.value.trim()
+  });
+  
+  try {
+    const result = await addSong(
+      playlistId,
+      songTitle.value.trim(),
+      songArtist.value.trim(),
+      songThumb.value.trim() || null
+    );
+    console.log('Song added:', result);
+    songTitle.value = songArtist.value = songThumb.value = "";
+    await loadSongs();
+  } catch (error) {
+    console.error('Error adding song:', error);
+    alert('Failed to add song: ' + error.message);
+  }
 });
 
 saveTitleBtn.addEventListener("click", async () => {
@@ -95,7 +118,7 @@ saveTitleBtn.addEventListener("click", async () => {
 deleteBtn.addEventListener("click", async () => {
   if (!confirm("Delete this playlist and all its songs?")) return;
   await deletePlaylist(playlistId);
-  location.href = "/pages/dashboard.html";
+  location.href = "/src/pages/dashboard.html";
 });
 
 // iTunes search

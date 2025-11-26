@@ -5,21 +5,33 @@
     <link rel="icon" type="image/svg+xml" href="/vite.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Playlist Manager - Login</title>
+    <link rel="stylesheet" href="/src/css/style.css">
     <script type="module" src="/src/js/main.js"></script>
   </head>
+
   <body>
-    <!-- For testing purposes -->
-    <header><a href="src/pages/dashboard.html">Dashboard</a></header>
+    <header class="header">
+      <a href="/index.html" class="logo">Playlist App</a>
+      <nav class="nav">
+        <a href="/src/pages/explore.html">Explore</a>
+        <a href="/src/pages/dashboard.html">My Playlists</a>
+      </nav>
+    </header>
 
-    <main>
-      <div id="message"></div>
-      <h1>Login</h1>
+    <main class="container">
+      <div class="card auth-card">
+        <h1>Login</h1>
 
-      <input id="email" placeholder="Email">
-      <input id="password" type="password" placeholder="Password">
-      
-      <button id="login">Login</button>
-      <button id="signup">Sign Up</button>
+        <div id="message" class="message"></div>
+
+        <input id="email" placeholder="Email" class="full-input">
+        <input id="password" type="password" placeholder="Password" class="full-input">
+
+        <div class="row auth-buttons">
+          <button id="login">Login</button>
+          <button id="signup" class="secondary">Sign Up</button>
+        </div>
+      </div>
     </main>
 
     <footer></footer>

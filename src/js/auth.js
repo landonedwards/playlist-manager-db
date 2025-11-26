@@ -22,10 +22,10 @@ export async function signUp(email, password) {
 
 export async function signOut() {
     await supabase.auth.signOut();
-    window.location.href = "/pages/index.html";
+    window.location.href = "/index.html";
 }
 
 export async function getUser() {
-    const { data } = await supabase.auth.getUser();
-    return data.user;
+    const { data: { session } } = await supabase.auth.getSession();
+    return session?.user || null;
 }

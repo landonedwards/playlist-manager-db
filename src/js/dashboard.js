@@ -13,7 +13,7 @@ if (!user) {
 async function load() {
     const playlists = await getMyPlaylists(user.id);
     list.innerHTML = playlists.map(
-        p => `<div><a href="/pages/editor.html?id=${p.id}">${p.title}</a></div>`
+        p => `<div><a href="/src/pages/editor.html?id=${p.id}">${p.title}</a></div>`
     ).join("");
 }
 
