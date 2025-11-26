@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Explore Playlists</title>
+  <link rel="stylesheet" href="/css/styles.css">
+  <script type="module" src="/src/js/explore.js" defer></script>
+</head>
+<body>
+  <header>
+    <a href="/index.html" class="logo">Playlist App</a>
+    <nav><a href="/pages/dashboard.html">My Playlists</a> · <a href="/pages/editor.html">Editor</a></nav>
+  </header>
+
+  <main class="container">
+    <section class="card">
+      <h2>Explore Playlists</h2>
+      <div class="row">
+        <input id="searchInput" placeholder="Search by title or user id" />
+        <button id="searchBtn">Search</button>
+        <button id="refreshBtn">Refresh</button>
+      </div>
+      <ul id="playlists" class="playlist-list"></ul>
+    </section>
+
+    <section id="detailCard" class="card hidden">
+      <h3 id="detailTitle">Playlist</h3>
+      <div><small>By <span id="detailUser"></span></small></div>
+      <ul id="detailSongs" class="song-list"></ul>
+      <div class="row">
+        <button id="importBtn">Import into my account</button>
+        <button id="closeDetail">Close</button>
+      </div>
+    </section>
+  </main>
+</body>
+</html>

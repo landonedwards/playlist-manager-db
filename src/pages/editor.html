@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Playlist Manager - Editor</title>
+  <link rel="stylesheet" href="/css/styles.css">
+  <script type="module" src="/src/js/editor.js" defer></script>
+</head>
+<body>
+  <header>
+    <a href="/index.html" class="logo">Playlist App</a>
+    <nav><a href="/pages/explore.html">Explore</a> · <a href="/pages/dashboard.html">My Playlists</a></nav>
+  </header>
+
+  <main class="container">
+    <section class="card">
+      <h2 id="playlistTitle">Loading...</h2>
+      <div class="row">
+        <input id="titleInput" placeholder="Change playlist title" />
+        <button id="saveTitle">Save Title</button>
+        <button id="deletePlaylist" class="danger">Delete Playlist</button>
+      </div>
+    </section>
+
+    <section class="card">
+      <h3>Songs</h3>
+      <ul id="songList" class="song-list"></ul>
+
+      <form id="manualAdd" class="row">
+        <input id="songTitle" placeholder="Song title" required />
+        <input id="songArtist" placeholder="Artist" required />
+        <input id="songThumb" placeholder="Thumbnail URL (optional)" />
+        <button type="submit">Add Song</button>
+      </form>
+    </section>
+
+    <section class="card">
+      <h3>Search iTunes</h3>
+      <div class="row">
+        <input id="itunesQuery" placeholder="Search artist or track" />
+        <button id="searchItunes">Search</button>
+      </div>
+      <ul id="itunesResults" class="itunes-results"></ul>
+    </section>
+  </main>
+</body>
+</html>
